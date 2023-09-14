@@ -1,0 +1,131 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "password123",
+      "firstName": "John",
+      "lastName": "Carter"
+    },
+    {
+      "id": 2,
+      "username": "game",
+      "password": "game1234",
+      "firstName": "Sam",
+      "lastName": "Smith"
+    },
+    {
+      "id": 3,
+      "username": "john",
+      "password": "john1234",
+      "firstName": "Jordan",
+      "lastName": "Pickford"
+    },
+    {
+      "id": 4,
+      "username": "benz",
+      "password": "benz1234",
+      "firstName": "Lionel",
+      "lastName": "Messi"
+    },
+    {
+      "id": 5,
+      "username": "guest",
+      "password": "password1234",
+      "firstName": "Christino",
+      "lastName": "Ronaldo"
+    }
+  ],
+  "contacts": [
+    {
+      "id": 1,
+      "firstName": "Liam",
+      "lastName": "Smith",
+      "company": "GV",
+      "email": "liam.smith.test@gv.com",
+      "phone": "(681) 555-0168",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "firstName": "Noah",
+      "lastName": "Johnson",
+      "company": "Isomorphic Labs",
+      "email": "noah.johnson.test@isomorphiclabs.com",
+      "phone": "(469) 555-0146",
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "firstName": "Oliver",
+      "lastName": "Williams",
+      "company": "Google Fiber",
+      "email": "oliver.williams.test@googlefiber.com",
+      "phone": "(218) 555-0121",
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "firstName": "Elijah",
+      "lastName": "Brown",
+      "company": "DeepMind",
+      "email": "elijah.brown.test@deepmind.com",
+      "phone": "(605) 555-0160",
+      "userId": 2
+    },
+    {
+      "id": 5,
+      "firstName": "James",
+      "lastName": "Jones",
+      "company": "Tip",
+      "email": "james.jones.test@tip.com",
+      "phone": "(865) 555-0186",
+      "userId": 4
+    },
+    {
+      "id": 6,
+      "firstName": "William",
+      "lastName": "Garcia",
+      "company": "Wing",
+      "email": "william.garcia.test@wing.com",
+      "phone": "(904) 555-0190",
+      "userId": 1
+    },
+    {
+      "id": 7,
+      "firstName": "Benjamin",
+      "lastName": "Miller",
+      "company": "Calico",
+      "email": "benjamin.miller.test@calico.com",
+      "phone": "(389) 555-0138",
+      "userId": 2
+    },
+    {
+      "id": 8,
+      "firstName": "Lucas",
+      "lastName": "Davis",
+      "company": "Google",
+      "email": "lucas.davis.test@google.com",
+      "phone": "(281) 555-0128",
+      "userId": 1
+    },
+    {
+      "id": 9,
+      "firstName": "Henry",
+      "lastName": "Rodriguez",
+      "company": "CapitalG",
+      "email": "henry.rodriguez.test@capitalg.com",
+      "phone": "(410) 555-0140",
+      "userId": 1
+    },
+    {
+      "id": 10,
+      "firstName": "Theodore",
+      "lastName": "Martinez",
+      "company": "Verily",
+      "email": "theodore.martinez.test@verily.com",
+      "phone": "(711) 555-0171",
+      "userId": 2
+    }
+  ]
+}

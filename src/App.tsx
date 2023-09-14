@@ -1,5 +1,7 @@
 import Login from "./containers/Login";
+import NavBar from "./containers/Navbar";
 import Dashboard from "./containers/Dashboard";
+
 import { Routes, Route } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
@@ -11,7 +13,14 @@ function App() {
       <CssBaseline>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <NavBar>
+                <Dashboard />
+              </NavBar>
+            }
+          />
         </Routes>
       </CssBaseline>
     </ThemeProvider>

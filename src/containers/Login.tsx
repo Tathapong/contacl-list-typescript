@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { isNotEmpty } from "../validations/validation";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { Container, Typography, Box, Avatar, TextField, Button } from "@mui/material";
+import { Container, Typography, Box, Avatar, TextField, Button, CircularProgress } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
-interface InputType {
-  username: string;
-  password: string;
-}
+import { isNotEmpty } from "../validations/validation";
+import { InputType, Status } from "../interface/interfaces";
+
+import { thunk_login, selectUser, selectError, selectStatus } from "../stores/userSlice";
+import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 
 const initialInput = { username: "", password: "" };
 
@@ -15,11 +16,24 @@ function Login() {
   const [input, setInput] = useState<InputType>({ ...initialInput });
   const [errorInput, setErrorInput] = useState<InputType>({ ...initialInput });
 
+  const user = useAppSelector(selectUser);
+  const loginError = useAppSelector(selectError);
+  const loginStatus = useAppSelector(selectStatus);
+
+  const isLoading = loginStatus === Status.PENDING;
+
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (user) navigate("/dashboard");
+  }, [user, navigate]);
+
   function onChangeInput(ev: React.ChangeEvent<HTMLInputElement>) {
     setInput((prev) => ({ ...prev, [ev.target.name]: ev.target.value }));
   }
 
-  function handleSubmit(ev: React.FormEvent<HTMLInputElement>) {
+  async function handleSubmit(ev: React.FormEvent<HTMLInputElement>) {
     ev.preventDefault();
 
     try {
@@ -32,9 +46,9 @@ function Login() {
       setErrorInput({ ...error });
       const isError = error.username || error.password;
 
-      // if(isError) {
-
-      // }
+      if (!isError) {
+        await dispatch(thunk_login(input));
+      }
     } catch (error) {
       console.log(error);
     }
@@ -64,6 +78,7 @@ function Login() {
             autoFocus
             name="username"
             color={errorInput.username ? "warning" : "primary"}
+            disabled={isLoading}
             onChange={onChangeInput}
           />
           <Box component="small" color="red" fontStyle="italic">
@@ -78,13 +93,24 @@ function Login() {
             autoComplete="password"
             name="password"
             color={errorInput.password ? "warning" : "primary"}
+            disabled={isLoading}
             onChange={onChangeInput}
           />
           <Box component="small" color="red" fontStyle="italic">
             {errorInput.password}
           </Box>
+          <Typography variant="body1" align="center" mt={2} color={"red"}>
+            {loginError}
+          </Typography>
+          {isLoading ? (
+            <Box textAlign={"center"}>
+              <CircularProgress />
+            </Box>
+          ) : (
+            ""
+          )}
 
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2, py: 1 }}>
+          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2, py: 1 }} disabled={isLoading}>
             Sign in
           </Button>
         </Box>
